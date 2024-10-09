@@ -12,7 +12,7 @@ class YoloRealSenseNode(Node):
         super().__init__('yolo_realsense_node')
 
         # YOLOモデルの読み込み
-        self.model = YOLO('/home/yanagi/yolo learning data/best.pt')  # あなたのデータセット用のモデルパスを指定
+        self.model = YOLO('/home/yanagi/yolo learning data/best.pt')  # データセット用のモデルパスを指定
         self.bridge = CvBridge()
 
         # RealSenseカメラの設定
