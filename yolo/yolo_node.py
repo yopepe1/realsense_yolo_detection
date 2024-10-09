@@ -53,9 +53,10 @@ class YoloRealSenseNode(Node):
 
             if class_name=='person':
 
+
+
                 #depth_frame = self.pipeline.wait_for_frames().get_depth_frame()
                 #distance = depth_frame.get_distance(x_center, y_center)
-
                 twist_msg=Twist()
                 twist_msg.linear.x = 0.5  # 前進の速度
                 twist_msg.angular.z = 0.0  # 旋回の速度
