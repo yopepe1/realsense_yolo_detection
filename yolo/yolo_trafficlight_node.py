@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
-from std_msgs.msg import String  # メッセージ型のトピックをパブリッシュするために使う
+from geometry_msgs.msg import Twist  # 変更：Twistメッセージをインポート
 from cv_bridge import CvBridge
 import cv2
 import pyrealsense2 as rs
@@ -19,11 +19,10 @@ class YoloRealSenseNode(Node):
         self.pipeline = rs.pipeline()
         self.config = rs.config()
         self.config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
-        #self.config.enable_stream(rs.stream.depth, 848, 480, rs.format.z16, 30)
         self.pipeline.start(self.config)
 
         # ROS2のパブリッシャー
-        self.pub = self.create_publisher(String, 'detection_status', 10)
+        self.pub = self.create_publisher(Twist, 'cmd_vel', 10)  # 変更：Twistメッセージ用に変更
 
         # ROS2サブスクリプションの設定
         self.subscription = self.create_subscription(
@@ -54,19 +53,19 @@ class YoloRealSenseNode(Node):
             elif class_id == 1:  # RED
                 red_detected = True
 
-        # 条件に応じてメッセージを送信
-        message = String()
+        # 条件に応じてTwistメッセージを送信
+        twist_msg = Twist()
 
         if green_detected:
-            message.data = "進め"  # GREENが検知された
+            twist_msg.linear.x = 0.0  # GREENが検知された場合、止まる
         elif red_detected:
-            message.data = "止まれ"  # REDが検知された
+            twist_msg.linear.x = 1.0  # REDが検知された場合、1m/sで進む
         else:
-            message.data = "検知できません"  # どちらも検知されなかった
+            twist_msg.linear.x = 0.0  # どちらも検知されなかった場合、止まる
 
-        # トピックにメッセージをパブリッシュ
-        self.pub.publish(message)
-        self.get_logger().info(f'メッセージ: {message.data}')
+        # トピックにTwistメッセージをパブリッシュ
+        self.pub.publish(twist_msg)
+        self.get_logger().info(f'速度: {twist_msg.linear.x} m/s')
 
         # 結果を表示
         cv2.imshow('YOLO RealSense', annotated_img)
