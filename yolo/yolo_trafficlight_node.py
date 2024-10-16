@@ -16,10 +16,9 @@ class YoloRealSenseNode(Node):
         self.bridge = CvBridge()
 
         # RealSenseカメラの設定
-        self.pipeline = rs.pipeline()
-        self.config = rs.config()
-        self.config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
-        self.pipeline.start(self.config)
+        #self.pipeline = rs.pipeline()
+        #self.config = rs.config()
+        #self.config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
 
         # ROS2のパブリッシャー
         self.pub = self.create_publisher(Twist, 'cmd_vel', 10)  # 変更：Twistメッセージ用に変更
@@ -74,7 +73,7 @@ class YoloRealSenseNode(Node):
 
 def destroy_node(self):
         # パイプラインとウィンドウを終了
-        self.pipeline.stop()
+        #self.pipeline.stop()
         cv2.destroyAllWindows()
         super().destroy_node()
 
