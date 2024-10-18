@@ -4,7 +4,6 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist  # 変更：Twistメッセージをインポート
 from cv_bridge import CvBridge
 import cv2
-import pyrealsense2 as rs
 from ultralytics import YOLO
 from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicty
 
