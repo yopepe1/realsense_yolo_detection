@@ -4,7 +4,6 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist  # 変更：Twistメッセージをインポート
 from cv_bridge import CvBridge
 import cv2
-import pyrealsense2 as rs
 from ultralytics import YOLO
 
 class YoloRealSenseNode(Node):
@@ -12,14 +11,9 @@ class YoloRealSenseNode(Node):
         super().__init__('yolo_realsense_node')
 
         # YOLOモデルの読み込み
-        self.model = YOLO('/home/yanagi/yolo learning data/best.pt')  # データセット用のモデルパスを指定
+        self.model = YOLO('/home/yoheiyanagi/YOLO/ultralytics/runs/detect/train2/weights/best.pt')  # データセット用のモデルパスを指定
         self.bridge = CvBridge()
 
-        # RealSenseカメラの設定
-        self.pipeline = rs.pipeline()
-        self.config = rs.config()
-        self.config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
-        self.pipeline.start(self.config)
 
         # ROS2のパブリッシャー
         self.pub = self.create_publisher(Twist, 'cmd_vel', 10)  # 変更：Twistメッセージ用に変更
@@ -74,7 +68,7 @@ class YoloRealSenseNode(Node):
 
 def destroy_node(self):
         # パイプラインとウィンドウを終了
-        self.pipeline.stop()
+        #self.pipeline.stop()
         cv2.destroyAllWindows()
         super().destroy_node()
 
