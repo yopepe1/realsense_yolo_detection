@@ -5,7 +5,7 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='yolo',  
-            executable='yolo_imade_node',
+            executable='yolo_image_node',
             output='screen'),
         Node(
             package='yolo', 

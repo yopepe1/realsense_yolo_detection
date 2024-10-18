@@ -1,0 +1,21 @@
+[0.276s] Invoking command in '/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection': PYTHONPATH=/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/yolo build --build-base /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/build install --record /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/install.log --single-version-externally-managed install_data
+[0.381s] running egg_info
+[0.382s] writing build/yolo/yolo.egg-info/PKG-INFO
+[0.382s] writing dependency_links to build/yolo/yolo.egg-info/dependency_links.txt
+[0.382s] writing entry points to build/yolo/yolo.egg-info/entry_points.txt
+[0.382s] writing requirements to build/yolo/yolo.egg-info/requires.txt
+[0.382s] writing top-level names to build/yolo/yolo.egg-info/top_level.txt
+[0.382s] reading manifest file 'build/yolo/yolo.egg-info/SOURCES.txt'
+[0.383s] writing manifest file 'build/yolo/yolo.egg-info/SOURCES.txt'
+[0.383s] running build
+[0.383s] running install
+[0.383s] running install_data
+[0.383s] running install_egg_info
+[0.384s] removing '/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/python3.10/site-packages/yolo-0.0.1-py3.10.egg-info' (and everything under it)
+[0.384s] Copying build/yolo/yolo.egg-info to /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/python3.10/site-packages/yolo-0.0.1-py3.10.egg-info
+[0.384s] running install_scripts
+[0.394s] Installing control_node script to /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/yolo
+[0.395s] Installing yolo_image_node script to /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/yolo
+[0.395s] Installing yolo_trafficlight_node script to /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/yolo
+[0.395s] writing list of installed files to '/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/install.log'
+[0.405s] Invoked command in '/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection' returned '0': PYTHONPATH=/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/install/yolo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/yolo build --build-base /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/build install --record /home/yoheiyanagi/ros2_ws/src/realsense_yolo_detection/build/yolo/install.log --single-version-externally-managed install_data

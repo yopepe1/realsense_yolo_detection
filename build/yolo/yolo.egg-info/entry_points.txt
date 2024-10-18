@@ -1,0 +1,5 @@
+[console_scripts]
+control_node = yolo.control_node:main
+yolo_image_node = yolo.yolo_image_node:main
+yolo_trafficlight_node = yolo.yolo_trafficlight_node:main
+
