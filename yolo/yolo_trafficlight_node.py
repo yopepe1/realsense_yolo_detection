@@ -6,6 +6,8 @@ from cv_bridge import CvBridge
 import cv2
 import pyrealsense2 as rs
 from ultralytics import YOLO
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicty
+
 
 class YoloRealSenseNode(Node):
     def __init__(self):
@@ -15,10 +17,11 @@ class YoloRealSenseNode(Node):
         self.model = YOLO('/home/yanagi/yolo learning data/best.pt')  # データセット用のモデルパスを指定
         self.bridge = CvBridge()
 
-        # RealSenseカメラの設定
-        #self.pipeline = rs.pipeline()
-        #self.config = rs.config()
-        #self.config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
+        qos_profile=QoSProfile(
+            reliability=QoSReliabilityPolicy.BEST_EFFORT,
+            history=QoSHistoryPolicty.KEEP_LAST,
+            depth=1
+        )
 
         # ROS2のパブリッシャー
         self.pub = self.create_publisher(Twist, 'cmd_vel', 10)  # 変更：Twistメッセージ用に変更
