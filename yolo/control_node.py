@@ -23,7 +23,7 @@ class TwistNode(Node):
 
     def red_callback(self, msg):
         if msg.data:  # REDが検知された場合
-            self.twist_msg.linear.x = 1.0  # 1m/sで進む
+            self.twist_msg.linear.x = 0.2  # 1m/sで進む
         self.publish_twist()
 
     def publish_twist(self):

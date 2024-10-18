@@ -4,6 +4,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 from ultralytics import YOLO
 from std_msgs.msg import Bool
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy
 
 class YoloNode(Node):
     def __init__(self):
@@ -12,6 +13,14 @@ class YoloNode(Node):
         # YOLOモデルの読み込み
         self.model = YOLO('/home/yoheiyanagi/YOLO/ultralytics/runs/detect/train2/weights/best.pt')
         self.bridge = CvBridge()
+        
+        qos_profile = QoSProfile(
+            reliability=QoSReliabilityPolicy.BEST_EFFORT,
+            history=QoSHistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+        
+        
 
         # ROS2サブスクリプションの設定
         self.subscription = self.create_subscription(
